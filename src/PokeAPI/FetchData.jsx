@@ -52,7 +52,7 @@ function FetchData() {
       {!pokemonDetails && !pokemonMoreDetails && (
         <img className="w-96" src={loading} />
       )}
-      <div className="grid gap-4 grid-cols-3 bg-red-500 border-2 rounded p-8 border-red-700">
+      <div className="grid gap-4 xl:grid-cols-7 lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 bg-red-500 border-2 rounded p-8 border-red-700">
         {pokemonDetails &&
           pokemonMoreDetails &&
           pokemonDetails.map((details, index) => (
