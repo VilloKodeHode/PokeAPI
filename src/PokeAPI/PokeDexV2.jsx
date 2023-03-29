@@ -33,7 +33,7 @@ export default function PokeDexV2() {
     //do another fetch here to get flavortext (look at line 34 in the other PokeAPI i made)
   }
   function findOne(event) {
-    setSearchQuary(event.target.value);
+    setSearchQuary(event.target.value.toLowerCase());
   }
   function clickOne(name) {
     setSearchQuary(name);
@@ -51,7 +51,7 @@ export default function PokeDexV2() {
           >
             <button
               onClick={() => clickOne(pokemon.name)}
-              className="text-xl bg-slate-50 p-1 shadow-md my-2"
+              className="text-xl bg-slate-50 p-1 text-black shadow-md my-2"
             >
               {pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}
             </button>
@@ -64,10 +64,13 @@ export default function PokeDexV2() {
         ))}
       </div>
       <div className="flex flex-col justify-start items-center gap-4">
-        <h1>PokeAPI</h1>
+        <h1 className="text-4xl">PokeAPI</h1>
         <form
           className="grid justify-around items-center gap-12 sticky top-[10%]"
-          onSubmit={FetchOne}
+          onSubmit={(event) => {
+            event.preventDefault();
+            FetchOne(searchQuery);
+          }}
         >
           <label htmlFor="search" className="text-xl">
             Search for a Pokemon:
@@ -79,7 +82,7 @@ export default function PokeDexV2() {
             value={searchQuery}
             onChange={findOne}
           />
-          <button className="shadow-xl bg-slate-50" type="submit">
+          <button className="shadow-xl bg-slate-50 text-black" type="submit">
             Search
           </button>
         </form>
